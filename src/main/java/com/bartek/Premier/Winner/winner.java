@@ -1,8 +1,4 @@
-package com.bartek.Premier.modules;
-
-import javax.persistence.Id;
-import java.sql.Connection;
-import java.sql.SQLException;
+package com.bartek.Premier.Winner;
 
 
 public class winner {

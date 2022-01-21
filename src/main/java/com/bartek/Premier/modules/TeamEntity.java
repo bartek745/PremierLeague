@@ -2,10 +2,12 @@ package com.bartek.Premier.modules;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name= "Teams")
 public class TeamEntity {
+    @Id
     private long id;
     private String teamName;
     private int won;
@@ -14,11 +16,30 @@ public class TeamEntity {
     private int goalsScored;
     private int goalsLost;
     private int points;
+    @OneToOne
+    @JoinColumn(name = "manager_id")
+    private Manager manager;
+    private String stadium;
+
+    @ManyToOne
+    @JoinColumn(name = "player_id")
+    private Player player;
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
+
+
     public TeamEntity() {
 
     }
 
-    public TeamEntity(long id, String teamName, int won, int drawn, int lost, int goalsScored, int goalsLost, int points) {
+
+    public TeamEntity(long id, String teamName, int won, int drawn, int lost, int goalsScored, int goalsLost, int points, Manager manager, String stadium, Player player) {
         this.id = id;
         this.teamName = teamName;
         this.won = won;
@@ -27,12 +48,10 @@ public class TeamEntity {
         this.goalsScored = goalsScored;
         this.goalsLost = goalsLost;
         this.points = points;
+        this.manager = manager;
+        this.stadium = stadium;
+        this.player = player;
     }
-
-
-    @Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 
     public long getId() {
         return id;
@@ -103,6 +122,26 @@ public class TeamEntity {
 
     public TeamEntity setPoints(int points) {
         this.points = points;
+        return this;
+    }
+
+
+    public String getStadium() {
+        return stadium;
+    }
+
+    public TeamEntity setStadium(String stadium) {
+        this.stadium = stadium;
+        return this;
+    }
+
+    public TeamEntity setManager(Manager manager) {
+        this.manager = manager;
+        return this;
+    }
+
+    public TeamEntity setPlayer(Player player) {
+        this.player = player;
         return this;
     }
 }

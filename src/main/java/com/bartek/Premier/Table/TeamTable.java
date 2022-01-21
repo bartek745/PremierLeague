@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class TeamTable {
     public static void Teams(Connection con) throws SQLException {
-        String query = "select*from Teams";
+        String query = "Select*From Teams Order By points Desc";
 
 
     }

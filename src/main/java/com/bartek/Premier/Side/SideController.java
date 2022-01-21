@@ -22,7 +22,7 @@ public class SideController {
         SideDto sideDto =SideMemoryStorageService.createMatch(sideForm.getTeam1(), sideForm.getTeam2());
         return "/pl/side/match";
     }
-    @RequestMapping(path = "/pl/table/posts/", method = RequestMethod.GET)
+    @RequestMapping(path = "/pl/table/posts/", method = RequestMethod.DELETE)
     public String deleteSideform (@PathVariable("table") String team1,String team2, Model model){
        model.addAttribute("match", SideMemoryStorageService.deleteMatch);
         return "table/post";
