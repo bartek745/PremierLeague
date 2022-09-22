@@ -1,7 +1,7 @@
 package com.bartek.Premier.Winner;
 
 
-public class winner {
+public class winner  {
     private String team1;
     private String team2;
 

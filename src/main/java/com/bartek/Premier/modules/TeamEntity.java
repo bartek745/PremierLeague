@@ -2,11 +2,10 @@ package com.bartek.Premier.modules;
 
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name= "Teams")
-public class TeamEntity {
+public class TeamEntity{
     @Id
     private long id;
     private String teamName;
@@ -16,20 +15,25 @@ public class TeamEntity {
     private int goalsScored;
     private int goalsLost;
     private int points;
+
+
+
+    private byte tablePosition;
+    private String startingElevenPower;
     @OneToOne
     @JoinColumn(name = "manager_id")
-    private Manager manager;
+    private TeamManager manager;
     private String stadium;
 
     @ManyToOne
     @JoinColumn(name = "player_id")
-    private Player player;
+    private TeamPlayer player;
 
-    public Player getPlayer() {
+    public TeamPlayer getPlayer() {
         return player;
     }
 
-    public Manager getManager() {
+    public TeamManager getManager() {
         return manager;
     }
 
@@ -38,8 +42,7 @@ public class TeamEntity {
 
     }
 
-
-    public TeamEntity(long id, String teamName, int won, int drawn, int lost, int goalsScored, int goalsLost, int points, Manager manager, String stadium, Player player) {
+    public TeamEntity(long id, String teamName, int won, int drawn, int lost, int goalsScored, int goalsLost, int points) {
         this.id = id;
         this.teamName = teamName;
         this.won = won;
@@ -48,6 +51,26 @@ public class TeamEntity {
         this.goalsScored = goalsScored;
         this.goalsLost = goalsLost;
         this.points = points;
+    }
+
+    public TeamEntity(long id, String teamName, TeamManager manager, String stadium) {
+        this.id = id;
+        this.teamName = teamName;
+        this.manager = manager;
+        this.stadium = stadium;
+    }
+
+    public TeamEntity(long id, String teamName, int won, int drawn, int lost, int goalsScored, int goalsLost, int points, byte tablePosition, String startingElevenPower, TeamManager manager, String stadium, TeamPlayer player) {
+        this.id = id;
+        this.teamName = teamName;
+        this.won = won;
+        this.drawn = drawn;
+        this.lost = lost;
+        this.goalsScored = goalsScored;
+        this.goalsLost = goalsLost;
+        this.points = points;
+        this.tablePosition = tablePosition;
+        this.startingElevenPower = startingElevenPower;
         this.manager = manager;
         this.stadium = stadium;
         this.player = player;
@@ -135,13 +158,31 @@ public class TeamEntity {
         return this;
     }
 
-    public TeamEntity setManager(Manager manager) {
+    public TeamEntity setManager(TeamManager manager) {
         this.manager = manager;
         return this;
     }
 
-    public TeamEntity setPlayer(Player player) {
+    public TeamEntity setPlayer(TeamPlayer player) {
         this.player = player;
+        return this;
+    }
+
+    public byte getTablePosition() {
+        return tablePosition;
+    }
+
+    public TeamEntity setTablePosition(byte tablePosition) {
+        this.tablePosition = tablePosition;
+        return this;
+    }
+
+    public String getStartingElevenPower() {
+        return startingElevenPower;
+    }
+
+    public TeamEntity setStartingElevenPower(String startingElevenPower) {
+        this.startingElevenPower = startingElevenPower;
         return this;
     }
 }

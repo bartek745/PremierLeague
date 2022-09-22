@@ -1,25 +1,57 @@
 package com.bartek.Premier.Side;
 
 
-public class SideForm {
-private String team1;
-private String team2;
+import com.bartek.Premier.Table.TableMatch;
+import com.bartek.Premier.Table.TableTeam;
+import com.bartek.Premier.Winner.MatchPrediction;
+import com.bartek.Premier.modules.TeamEntity;
 
-    public String getTeam1() {
-        return team1;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
+public class SideForm {
+    private TeamEntity teamEntity;
+    private TableMatch tableMatch;
+    private TableTeam tableTeam;
+    private MatchPrediction matchPrediction;
+
+    public SideForm() {
     }
 
-    public SideForm setTeam1(String team1) {
-        this.team1 = team1;
+    public TeamEntity getTeamEntity() {
+        return teamEntity;
+    }
+
+    public SideForm setTeamEntity(TeamEntity teamEntity) {
+        this.teamEntity = teamEntity;
         return this;
     }
 
-    public String getTeam2() {
-        return team2;
+    public TableMatch getTableMatch() {
+        return tableMatch;
     }
 
-    public SideForm setTeam2(String team2) {
-        this.team2 = team2;
+    public SideForm setTableMatch(TableMatch tableMatch) {
+        this.tableMatch = tableMatch;
+        return this;
+    }
+
+    public TableTeam getTableTeam() {
+        return tableTeam;
+    }
+
+    public SideForm setTableTeam(TableTeam tableTeam) {
+        this.tableTeam = tableTeam;
+        return this;
+    }
+
+    public MatchPrediction getMatchPrediction() {
+        return matchPrediction;
+    }
+
+    public SideForm setMatchPrediction(MatchPrediction matchPrediction) {
+        this.matchPrediction = matchPrediction;
         return this;
     }
 }

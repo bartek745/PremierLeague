@@ -1,11 +1,11 @@
 package com.bartek.Premier.Side;
 
-import com.bartek.Premier.Winner.PossibilityOfWin;
+import com.bartek.Premier.Winner.TeamChances;
 
 public class SideDto {
     private String team1;
-    private PossibilityOfWin possibilityOfWin=new PossibilityOfWin();
-    Class pow=possibilityOfWin.getClass();
+    private TeamChances teamChances=new TeamChances();
+    Class pow=TeamChances.class;
     String powTOString=pow.toString();
     private String team2;
 
